@@ -1,0 +1,28 @@
+mutation Login($email: String!, $password: String!) {
+  login(email: $email, password: $password) {
+    user {
+      email
+      firstName
+      lastName
+      profileImageUrl
+      RoleId
+      id
+      date_of_birth
+    }
+    token
+    message
+    status
+  }
+}
+
+query getLoggedInUSer {
+  getLoggedInUser {
+    email
+    firstName
+    lastName
+    profileImageUrl
+    RoleId
+    id
+    date_of_birth
+  }
+}

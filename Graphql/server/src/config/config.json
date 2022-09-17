@@ -1,0 +1,11 @@
+{
+    "development": {
+      "username": "postgres",
+      "password": "kwanso123",
+      "database": "blogapp",
+      "host": "127.0.0.1",
+      "dialect": "postgres"
+    }
+   
+  }
+  

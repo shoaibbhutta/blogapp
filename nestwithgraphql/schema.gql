@@ -1,0 +1,147 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Role {
+  id: String!
+  name: String!
+  user: [User!]!
+}
+
+type PostMedia {
+  id: String!
+  mediaUrl: String!
+  post: Post!
+}
+
+type Comment {
+  id: String!
+  comment: String!
+  user: User!
+  post: Post!
+  children: [Comment]!
+  parentId: String
+  parent: Comment
+}
+
+type Post {
+  id: String!
+  description: String
+  postMedia: [PostMedia]!
+  comments: [Comment]!
+  user: User!
+}
+
+type User {
+  id: String!
+  firstName: String!
+  email: String!
+  lastName: String!
+  dateOfBirth: DateTime!
+  bio: String
+  password: String!
+  role: Role
+  Post: [Post!]
+  comments: [Comment!]
+  fullName: String!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type UserLoginOutput {
+  token: String!
+  user: User!
+}
+
+type UserSignupOutput {
+  message: String!
+}
+
+type CreateRoleOutput {
+  role: Role!
+}
+
+type DeleteRoleOutput {
+  message: String!
+}
+
+type GetPostsResponseGql {
+  posts: [Post]!
+  count: Float!
+}
+
+type GetPostResponseGql {
+  post: Post
+}
+
+type DeletePostResponseGql {
+  message: String!
+}
+
+type SourceInterface {
+  description: String!
+}
+
+type SearchPostResponse {
+  _index: String!
+  _type: String!
+  _id: String!
+  _score: Int!
+  _source: SourceInterface!
+}
+
+type AddCommentResponseGql {
+  post: Post!
+}
+
+type Query {
+  sayHello: String!
+  getPosts(page: Float!, limit: Float!): GetPostsResponseGql!
+}
+
+type Mutation {
+  login(body: LoginInputType!): UserLoginOutput!
+  register(signupBody: SignupInputType!): UserSignupOutput!
+  createRole(body: CreateRoleInputType!): CreateRoleOutput!
+  deleteRole(roleId: String!): DeleteRoleOutput!
+  createPost(body: CreatePostDto!): GetPostResponseGql!
+  updatePost(body: UpdatePostDto!): GetPostResponseGql!
+  deletePost(postId: String!): DeletePostResponseGql!
+  searchPostUsingDescription(description: String!): [SearchPostResponse!]!
+  addPostComment(body: AddCommmentBody!): AddCommentResponseGql!
+}
+
+input LoginInputType {
+  email: String!
+  password: String!
+}
+
+input SignupInputType {
+  email: String!
+  password: String!
+  dateOfBirth: DateTime!
+  firstName: String!
+  lastName: String!
+}
+
+input CreateRoleInputType {
+  name: String!
+}
+
+input CreatePostDto {
+  description: String!
+}
+
+input UpdatePostDto {
+  description: String!
+  postId: String!
+}
+
+input AddCommmentBody {
+  comment: String!
+  commentsId: String
+  postId: String!
+}

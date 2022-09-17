@@ -1,0 +1,171 @@
+mutation CreatePost($description: String!) {
+  createPost(createPostBody: { description: $description }) {
+    post {
+      id
+      UserId
+
+      User {
+        firstName
+        lastName
+        profileImageUrl
+        RoleId
+        id
+        email
+      }
+      description
+      createdAt
+    }
+  }
+}
+
+mutation DeletePost($deletePostId: Float!) {
+  deletePost(id: $deletePostId) {
+    message
+  }
+}
+
+mutation EditPost($editPostEditPostBody: createPostBody!, $editPostId: Float!) {
+  editPost(editPostBody: $editPostEditPostBody, id: $editPostId) {
+    post {
+      description
+      id
+
+      UserId
+      User {
+        firstName
+        lastName
+        profileImageUrl
+        RoleId
+        id
+        email
+      }
+      PostMedia {
+        mediaUrl
+        id
+
+        PostId
+      }
+
+      Comments {
+        id
+        CommentId
+        comment
+        PostId
+        UserId
+        User {
+          firstName
+          lastName
+          profileImageUrl
+          RoleId
+          id
+          email
+        }
+
+        Comments {
+          id
+          comment
+          CommentId
+          PostId
+          UserId
+          User {
+            firstName
+            lastName
+            profileImageUrl
+            RoleId
+            id
+            email
+          }
+          Comments {
+            id
+            comment
+            CommentId
+            PostId
+            UserId
+            User {
+              firstName
+              lastName
+              profileImageUrl
+              RoleId
+              id
+              email
+            }
+          }
+        }
+      }
+      createdAt
+    }
+  }
+}
+
+mutation CreateComment($createCommentCreateCommentBody: createCommentBody!) {
+  createComment(createCommentBody: $createCommentCreateCommentBody) {
+    post {
+      description
+      id
+
+      UserId
+      User {
+        firstName
+        lastName
+        profileImageUrl
+        RoleId
+        id
+        email
+      }
+      PostMedia {
+        mediaUrl
+        id
+
+        PostId
+      }
+
+      Comments {
+        id
+        CommentId
+        comment
+        PostId
+        UserId
+        User {
+          firstName
+          lastName
+          profileImageUrl
+          RoleId
+          id
+          email
+        }
+
+        Comments {
+          id
+          comment
+          CommentId
+          PostId
+          UserId
+          User {
+            firstName
+            lastName
+            profileImageUrl
+            RoleId
+            id
+            email
+          }
+          Comments {
+            id
+            comment
+            CommentId
+            PostId
+            UserId
+            User {
+              firstName
+              lastName
+              profileImageUrl
+              RoleId
+              id
+              email
+            }
+          }
+        }
+      }
+      createdAt
+    }
+  }
+}

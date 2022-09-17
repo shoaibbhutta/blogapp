@@ -1,0 +1,16 @@
+{
+  "type": "postgres",
+  "host": "localhost",
+  "port": 5432,
+  "username": "usama",
+  "password": "kwanso123",
+  "database": "nestdb",
+  "synchronize": true,
+  "logging": true,
+  "entities": ["src/model/**/*.model{.ts}", "./dist/model/**/*model.js"],
+  "migrations": ["src/migration/**/*.ts"],
+  "cli": {
+    "entitiesDir": "src/model/**/*.model{.ts}",
+    "migrationsDir": "src/migration"
+  }
+}

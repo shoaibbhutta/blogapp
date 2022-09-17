@@ -1,0 +1,73 @@
+query Post($page: Float!, $limit: Float!) {
+  getPosts(page: $page, limit: $limit) {
+    posts {
+      description
+      id
+      User {
+        firstName
+        lastName
+        profileImageUrl
+        RoleId
+        id
+        email
+      }
+      UserId
+      PostMedia {
+        mediaUrl
+        id
+
+        PostId
+      }
+
+      Comments {
+        id
+        CommentId
+        comment
+        PostId
+        UserId
+        User {
+          firstName
+          lastName
+          profileImageUrl
+          RoleId
+          id
+          email
+        }
+
+        Comments {
+          id
+          comment
+          CommentId
+          PostId
+          UserId
+          User {
+            firstName
+            lastName
+            profileImageUrl
+            RoleId
+            id
+            email
+          }
+          Comments {
+            id
+            comment
+            CommentId
+            PostId
+            UserId
+            User {
+              firstName
+              lastName
+              profileImageUrl
+              RoleId
+              id
+              email
+            }
+          }
+        }
+      }
+      createdAt
+    }
+
+    count
+  }
+}
